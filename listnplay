@@ -19,4 +19,4 @@ for i in $*; do
     echo "Playlist saved in $plfile"
 done
 
-"$vidplayer" "$plfile"
+"$vidplayer" "$playerargs" "$plfile"

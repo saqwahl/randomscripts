@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# print -l $HOME/Downloads/**/*.{mp4,mkv,avi,wav,mov,flv,webm}
+for i in {mp4,mkv,avi,wav,mov,flv,webm};do
+    print -l $HOME/Downloads/**/*.$i 2>&1 | grep -v '/home/guest/.local/bin/keepmpv'
+done
+
+# /home/guest/.local/bin/keepmpv:5: no matches found: /home/guest/Downloads/**/*.wav
+
+
+
+
+# mpvlist="$HOME/mpvlist"
+# rm "$mpvlist"
+
+# IFS=$'\n'
+# for i in "$*";do
+#     echo "$i" >> "$mpvlist"
+# done
+
+
+
+# # while true ; do
+# #     mpv $mpvargs
+# #     sleep 5
+# # done
+
+

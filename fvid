@@ -1,0 +1,5 @@
+#!/bin/bash
+
+searchpath=$(realpath "$1")
+
+find "$searchpath" -type f | grep -i -E '.(wmv|mp4|mkv|avi|flv|webm)$'

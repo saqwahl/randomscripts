@@ -1,0 +1,11 @@
+#!/bin/bash
+
+rm -rf /tmp/favs.m3u
+
+IFS=$'\n'
+for i in $(tmsu files favorites);do
+    realpath "$i" >> /tmp/favs.m3u
+done
+
+# tmsu files favorites > /tmp/favs.m3u
+mpv /tmp/favs.m3u $*

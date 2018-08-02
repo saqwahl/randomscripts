@@ -1,0 +1,9 @@
+#!/bin/bash
+
+prog="$1"
+interval=${2:-3}
+
+while true; do
+    $prog
+    sleep "$interval"
+done

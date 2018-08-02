@@ -1,0 +1,17 @@
+#!/bin/bash
+
+player=${player:-mpv}
+playlist="/tmp/tmsulist.${RANDOM}.m3u"
+tags=$*
+
+if [ -n "$tags" ]; then
+    for tag in $tags;do
+        tmsu files "$tag" \
+            >> "$playlist"
+    done
+
+    "$player" "$playlist"
+elif [ -z "$tags" ]; then
+    echo "please enter one of these tags: "
+    tmsu tags
+fi

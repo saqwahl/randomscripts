@@ -1,0 +1,22 @@
+#!/bin/bash
+
+######################################
+### Makes playlist and then plays it
+######################################
+
+vidplayer=${VIDPLAYER:-mpv}
+rannum=$RANDOM
+plfile="/tmp/playlist.$rannum.m3u"
+
+for i in $*; do
+    reali=$(realpath "$i")
+    searchpath=$(realpath "$reali")
+
+    find "$searchpath" -type f \
+        | grep -i -E '.(wmv|mp4|mkv|avi|flv|webm)$' \
+        >> "$plfile"
+
+done
+
+echo "Playlist saved in $plfile!"
+echo "$plfile" | xclip

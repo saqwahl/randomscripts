@@ -1,0 +1,13 @@
+#!/bin/bash
+
+player=${player:-mpv}
+playlist="/tmp/tmsulist.${RANDOM}.m3u"
+tags=$*
+
+for tag in $tags;do
+    tmsu files "$tag" \
+        >> "$playlist"
+done
+
+echo "created $playlist!"
+echo "$playlist" | xclip

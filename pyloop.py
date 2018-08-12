@@ -5,10 +5,11 @@ import os
 import sys
 import time
 
-args = sys.argv[1:]
+inter = int(sys.argv[1])
+args = sys.argv[2:]
 prog = ' '.join(args)
 print("Running " + prog + "!")
 
 while True:
     os.system(prog)
-    time.sleep(3)
+    time.sleep(inter)

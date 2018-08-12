@@ -12,9 +12,17 @@ for i in $*; do
     reali=$(realpath "$i")
     searchpath=$(realpath "$reali")
 
-    find "$searchpath" -type f \
-        | grep -i -E '.(wmv|mp4|mkv|avi|flv|webm)$' \
-        >> "$plfile"
+    echo "$searchpath"
+
+    if [ "$scriptdebug" ]; then
+        find "$searchpath" -type f \
+            | grep -i -E '.(wmv|mp4|mkv|avi|flv|webm)$' \
+            | tee "$plfile"
+    else
+        find "$searchpath" -type f \
+            | grep -i -E '.(wmv|mp4|mkv|avi|flv|webm)$' \
+            >> "$plfile"
+    fi
 
     echo "Playlist saved in $plfile"
 done

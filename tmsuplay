@@ -6,8 +6,13 @@ tags=$*
 
 if [ -n "$tags" ]; then
     for tag in $tags;do
-        tmsu files "$tag" \
-            >> "$playlist"
+        if [ "$scriptdebug" ]; then
+            tmsu files "$tag" \
+                | tee "$playlist"
+        else
+            tmsu files "$tag" \
+                >> "$playlist"
+        fi
     done
 
     "$player" "$playlist"

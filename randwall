@@ -4,18 +4,49 @@
 import os
 import sys
 import random
+import pickle
 
-abs = os.path.abspath
-pics = os.listdir(os.path.expanduser('~/Pictures/Wallpapers'))
-for pic in pics:
-    abs(pic)
+usr = os.path.expanduser
+# seen = list()
 
+if os.path.isfile(usr('~/.config/wallscript/queue.db')):
+    pics = pickle.load(open(usr('~/.config/wallscript/queue.db'), 'rb'))
+else:
+    pics = os.listdir(os.path.expanduser('~/Pictures/Wallpapers'))
+# for pic in pics:
+#     os.path.abspath(pic)
 
 random_index = random.randrange(0, len(pics))
-print('[ %s ]' % random_index + ' === ' + pics[random_index])
+# print('[ %s ]' % random_index + ' === ' + pics[random_index])
+
 wallpic = os.path.expanduser("~/Pictures/Wallpapers/%s" % pics[random_index])
-print(wallpic)
+# print(wallpic)
+
 command = 'feh --bg-fill %s' % wallpic
-print(command)
+# print(command)
+
+# seen.append(pics[random_index])
+del pics[random_index]
+
+
+# with open(os.path.expanduser('~/.config/wallscript/seen.db'), 'wb') as qfile:
+#     pickle.dump(pics, qfile)
+
 os.system(command)
+
+# print(len(pics))
+if len(pics) < 1:
+    pics = os.listdir(os.path.expanduser('~/Pictures/Wallpapers'))
+
+
+with open(os.path.expanduser('~/.config/wallscript/queue.db'), 'wb') as qfile:
+    pickle.dump(pics, qfile)
+
+
+
+
+
+
+
+
 

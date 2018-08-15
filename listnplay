@@ -8,6 +8,7 @@ vidplayer=${VIDPLAYER:-mpv}
 rannum=$RANDOM
 plfile="/tmp/playlist.$rannum.m3u"
 
+IFS=$'\n'
 for i in $*; do
     reali=$(realpath "$i")
     searchpath=$(realpath "$reali")

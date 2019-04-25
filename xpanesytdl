@@ -1,0 +1,6 @@
+#!/bin/bash
+
+linkfile="$1"
+
+cat "$linkfile" \
+    | xpanes -c "youtube-dl {}"

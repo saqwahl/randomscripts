@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-cat $* \
-    | sort \
-    | uniq \
-    | xpanes -c "youtube-dl {}"

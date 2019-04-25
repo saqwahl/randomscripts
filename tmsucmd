@@ -1,0 +1,9 @@
+#!/bin/bash
+
+category=${1}
+command=$(echo ${*} | awk '{$1 = ""; print $0}')
+
+echo $category
+echo $command
+
+eval ${command} ${category}
